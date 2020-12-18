@@ -94,40 +94,37 @@ public class GUI extends JFrame implements KeyListener {
 
 /////////////////////////////////////////////////////KEY_EVENTS//////////////////////////////////////////////////////////////////
 
-	public void keyPressed(KeyEvent e) {
-		switch (e.getKeyChar()) {
-
-		case 'd':
-			lblPlayer.setIcon(new ImageIcon(GUI.class.getResource("/GifsEImagenes/movDerGif-unscreen.gif")));
-			lblPlayer.setBounds(logica.moverDer(), 457, 56, 104);
-			break;
-
-		case 'a':
-			lblPlayer.setIcon(new ImageIcon(GUI.class.getResource("/GifsEImagenes/movIzqGif-unscreen.gif")));
-			lblPlayer.setBounds(logica.moverIzq(), 457, 56, 104);
-			break;
-
-		case KeyEvent.VK_SPACE:
-			if (contDeDisparo >= ctrlDeDisparo) {
-				contDeDisparo = 0;
-				lblPlayer.setIcon(new ImageIcon(GUI.class.getResource("/GifsEImagenes/disparo.gif")));
-				logica.disparar(new Pos(lblPlayer.getX() + lblPlayer.getBounds().width / 2, 424));
-			}
-			break;
-
-		}
-	}
+	public void keyPressed(KeyEvent e) {}
 
 	public void keyReleased(KeyEvent e) {
 		lblPlayer.setIcon(new ImageIcon(GUI.class.getResource("/GifsEImagenes/quietoGif-unscreen.gif")));
 	}
 
 	public void keyTyped(KeyEvent e) {
+		switch (e.getKeyChar()) {
+
+		case 'd':	lblPlayer.setIcon(new ImageIcon(GUI.class.getResource("/GifsEImagenes/movDerGif-unscreen.gif")));
+				 	lblPlayer.setBounds(logica.moverDer(), 457, 56, 104);
+				 	break;
+
+		case 'a':	lblPlayer.setIcon(new ImageIcon(GUI.class.getResource("/GifsEImagenes/movIzqGif-unscreen.gif")));
+					lblPlayer.setBounds(logica.moverIzq(), 457, 56, 104);
+					break;
+
+		case KeyEvent.VK_SPACE:
+				if (contDeDisparo >= ctrlDeDisparo) {
+					contDeDisparo = 0;
+					lblPlayer.setIcon(new ImageIcon(GUI.class.getResource("/GifsEImagenes/disparo.gif")));
+					logica.disparar(new Pos(lblPlayer.getX() + lblPlayer.getBounds().width / 2, 424));
+				}
+				break;
+		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void actualizarGUI() throws StopThreadException {
 		contDeDisparo++; // Aumento contador en este metodo porque se mantiene corriendo constantemente
+		
 		// Agrego las nuevas entidades al panel de juego
 		if (!logica.getEntidadesAA().isEmpty()) {
 			for (Entidad e : logica.getEntidadesAA()) {

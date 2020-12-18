@@ -21,17 +21,8 @@ import Visitor.Visitor;
 public class InfectAlphaVeloz_State extends State_Infectado {
 
 	// Constructor
-	public InfectAlphaVeloz_State() {
-		velocidad = 6;
-	}
-
-	/**
-	 * Retorna la velocidad
-	 * 
-	 * @return velocidad
-	 */
-	public int getVelocidad() {
-		return velocidad;
+	public InfectAlphaVeloz_State(int v) {
+		velocidad = v*2;
 	}
 
 	public void accionar(Logica l, int reposoDeDisparo, Pos pos, Rectangle hitBox, Proyectil_Factory fabProy,

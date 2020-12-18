@@ -20,8 +20,8 @@ import Visitor.Visitor;
 public class NormalInfectA_State extends State_Infectado {
 
 	// Velocidad
-	public NormalInfectA_State() {
-		velocidad = 2;
+	public NormalInfectA_State(int v) {
+		velocidad = v;
 	}
 
 	public void accionar(Logica l, int reposoDeDisparo, Pos pos, Rectangle hitBox, Proyectil_Factory fabProy,

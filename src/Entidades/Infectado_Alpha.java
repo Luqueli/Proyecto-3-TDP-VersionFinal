@@ -24,7 +24,8 @@ public class Infectado_Alpha extends Infectado {
 
 	// Constructor
 	public Infectado_Alpha() {
-		state = new NormalInfectA_State();
+		velocidad=3;
+		state = new NormalInfectA_State(velocidad);
 		dañoCAC = 23;
 		dañoProyVirus = 15;
 		carga_viral = 80;
@@ -62,7 +63,7 @@ public class Infectado_Alpha extends Infectado {
 	public void accionar(Logica l) {
 		reposoDeDisparo++;
 		if (carga_viral <= 20) {
-			state = new InfectAlphaVeloz_State();
+			state = new InfectAlphaVeloz_State(velocidad);
 		}
 
 		if (this.carga_viral <= 0) {
@@ -97,7 +98,7 @@ public class Infectado_Alpha extends Infectado {
 		return pos.getY();
 	}
 
-	/**
+	/*
 	 * Retorna el hitbox
 	 * 
 	 * @return hitBox
@@ -126,7 +127,7 @@ public class Infectado_Alpha extends Infectado {
 	 * Setea el estado a estado normal.
 	 */
 	public void setDefaultState() {
-		state = new NormalInfectA_State();
+		state = new NormalInfectA_State(velocidad);
 	}
 
 }
