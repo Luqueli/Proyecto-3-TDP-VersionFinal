@@ -2,7 +2,7 @@ package Temporizadores;
 
 import Entidades.Player;
 import Juego.Logica;
-import States.Normal_State;
+import States.NormalArma_State;
 
 /**
  * Clase TempPowerUpSA. Implementacion del temporizador PowerUpSA.
@@ -13,14 +13,11 @@ import States.Normal_State;
  *
  */
 
-public class TempPowerUpSA extends Temporizador
-{
+public class TempPowerUpSA extends Temporizador {
 	private Player p;
-	
-	
-	//Constructor
-	public TempPowerUpSA(int tl, Player e) 
-	{
+
+	// Constructor
+	public TempPowerUpSA(int tl, Player e) {
 		tiempoLimite = tl;
 		p = e;
 	}
@@ -28,12 +25,10 @@ public class TempPowerUpSA extends Temporizador
 	/**
 	 * Actualiza el contador y el estado del jugador
 	 */
-	public void actualizar(Logica l) 
-	{
+	public void actualizar(Logica l) {
 		contador++;
-		if (contador >= tiempoLimite) 
-		{
-			p.cambiarEstadoDeArma(new Normal_State());
+		if (contador >= tiempoLimite) {
+			p.cambiarEstadoDeArma(new NormalArma_State());
 			p.setTemp(null);
 		}
 	}

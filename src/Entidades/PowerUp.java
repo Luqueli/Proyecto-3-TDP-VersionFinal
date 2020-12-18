@@ -10,9 +10,7 @@ import javax.swing.JLabel;
  * @author Giuliano Giannotti
  *
  */
-public abstract class PowerUp extends Entidad
-{
-	protected JLabel label;
+public abstract class PowerUp extends Entidad {
 	protected boolean borrar;
-	
+
 }

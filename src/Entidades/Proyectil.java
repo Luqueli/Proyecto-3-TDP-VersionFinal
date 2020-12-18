@@ -11,8 +11,7 @@ import javax.swing.JLabel;
  * @author Giuliano Giannotti
  *
  */
-public abstract class Proyectil extends Entidad
-{
+public abstract class Proyectil extends Entidad {
 	protected JLabel label;
 	protected int daño;
 	protected boolean borrar;

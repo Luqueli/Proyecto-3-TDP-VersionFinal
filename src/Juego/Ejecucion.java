@@ -9,30 +9,23 @@ package Juego;
  *
  */
 
-public class Ejecucion implements Runnable
-{
+public class Ejecucion implements Runnable {
 	public GUI miGui;
-	
-	
-	//Constructor
-	public Ejecucion(GUI g) 
-	{
-		miGui=g;
+
+	// Constructor
+	public Ejecucion(GUI g) {
+		miGui = g;
 	}
-	
-	//Ejecuta la aplicacion
-	public void run() 
-	{
+
+	// Ejecuta la aplicacion
+	public void run() {
 		try {
 			miGui.iniciarJuego();
-			while (true) 
-			{
+			while (true) {
 				Thread.sleep(50);
-					miGui.actualizarGUI();
+				miGui.actualizarGUI();
 			}
-		}
-		catch (InterruptedException | StopThreadException e)  
-		{
+		} catch (InterruptedException | StopThreadException e) {
 			System.out.print(e.getMessage());
 		}
 	}

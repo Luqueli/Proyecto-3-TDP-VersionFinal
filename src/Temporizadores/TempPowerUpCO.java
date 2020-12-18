@@ -11,14 +11,11 @@ import Juego.Logica;
  *
  */
 
-public class TempPowerUpCO extends Temporizador
-{
+public class TempPowerUpCO extends Temporizador {
 	private boolean activado;
-	
-	
-	//Constructor
-	public TempPowerUpCO(int tl) 
-	{
+
+	// Constructor
+	public TempPowerUpCO(int tl) {
 		tiempoLimite = tl;
 		activado = false;
 	}
@@ -26,16 +23,13 @@ public class TempPowerUpCO extends Temporizador
 	/**
 	 * Actualiza el contador y el estado de los infectados
 	 */
-	public void actualizar(Logica l) 
-	{
+	public void actualizar(Logica l) {
 		contador++;
-		if (!activado)
-		{
+		if (!activado) {
 			l.ParalizarInfectados();
 			activado = true;
 		}
-		if (contador >= tiempoLimite) 
-		{
+		if (contador >= tiempoLimite) {
 			l.DesparalizarInfectados();
 			l.getPlayer().setTemp(null);
 		}

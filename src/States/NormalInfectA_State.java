@@ -17,30 +17,26 @@ import Visitor.Visitor;
  *
  */
 
-public class NormalInfectA_State extends State_Infectado 
-{
-	
-	//Velocidad
-	public NormalInfectA_State()
-	{
+public class NormalInfectA_State extends State_Infectado {
+
+	// Velocidad
+	public NormalInfectA_State() {
 		velocidad = 2;
 	}
-	
-	public void accionar(Logica l, int reposoDeDisparo, Pos pos,Rectangle hitBox,  Proyectil_Factory fabProy, JLabel label,int dañoProyVirus,Visitor visitor)
-	{
-		if (pos.getY( ) >= 600) 
-		{
-			pos.actPosY(-pos.getY()-label.getBounds().height);
-			hitBox.setLocation(pos.getX(),pos.getY());
+
+	public void accionar(Logica l, int reposoDeDisparo, Pos pos, Rectangle hitBox, Proyectil_Factory fabProy,
+			JLabel label, int dañoProyVirus, Visitor visitor) {
+		if (pos.getY() >= 600) {
+			pos.actPosY(-pos.getY() - label.getBounds().height);
+			hitBox.setLocation(pos.getX(), pos.getY());
 			visitor.setCooldown(false);
-		}
-		else 
-		{
+		} else {
 			pos.actPosY(velocidad);
 			hitBox.setLocation(pos.getX(), pos.getY());
-			if (reposoDeDisparo >= 40) 
-			{
-				Entidad e = fabProy.crearProyectil_InfectadoA(new Pos(pos.getX()+label.getBounds().width/2,pos.getY()+label.getBounds().height),dañoProyVirus);
+			if (reposoDeDisparo >= 40) {
+				Entidad e = fabProy.crearProyectil_InfectadoA(
+						new Pos(pos.getX() + label.getBounds().width / 2, pos.getY() + label.getBounds().height),
+						dañoProyVirus);
 				l.agregarEntidadAA(e);
 			}
 		}

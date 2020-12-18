@@ -12,22 +12,18 @@ import Entidades.Player;
  *
  */
 
-public class visitor_ProyInfectB extends Visitor
-{
+public class visitor_ProyInfectB extends Visitor {
 	private int daño;
-	
-	
-	//Constructor
-	public visitor_ProyInfectB(int d) 
-	{
+
+	// Constructor
+	public visitor_ProyInfectB(int d) {
 		daño = d;
 	}
-	
+
 	/**
 	 * 
 	 */
-	public void visit(Player e)
-	{
+	public void visit(Player e) {
 		e.recibirDaño(daño);
 	}
 }

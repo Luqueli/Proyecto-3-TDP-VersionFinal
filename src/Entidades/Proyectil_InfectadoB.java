@@ -16,51 +16,44 @@ import Visitor.visitor_ProyInfectB;
  * @author Giuliano Giannotti
  *
  */
-public class Proyectil_InfectadoB extends Proyectil
-{	
-	
-	//Constructor
-	public Proyectil_InfectadoB(Pos p, int d)
-	{
+public class Proyectil_InfectadoB extends Proyectil {
+
+	// Constructor
+	public Proyectil_InfectadoB(Pos p, int d) {
 		pos = p;
 		daño = d;
 		label = new JLabel(new ImageIcon(Proyectil_InfectadoB.class.getResource("/GifsEImagenes/Proyectil_InfectadoB.gif")));
-		label.setBounds(p.getX(), p.getY() , 16, 32);
-		hitBox = new Rectangle(p.getX(),p.getY(),label.getBounds().width,label.getBounds().height);
+		label.setBounds(p.getX(), p.getY(), 16, 32);
+		hitBox = new Rectangle(p.getX(), p.getY(), label.getBounds().width, label.getBounds().height);
 		posYDeInicio = pos.getY();
-		rangoDeAlcance = 220;
+		rangoDeAlcance = 180;
 		velocidad = 10;
 		borrar = false;
-		visitor =new visitor_ProyInfectB(daño);
+		visitor = new visitor_ProyInfectB(daño);
 	}
-	
+
 	/**
 	 * Retorna la posicion del label en el eje x
+	 * 
 	 * @return posicion del label en el eje x
 	 */
-	public int getPosX() 
-	{
+	public int getPosX() {
 		return pos.getX();
 	}
 
 	/**
 	 * Retorna la posicion del label en el eje y
+	 * 
 	 * @return posicion del label en el eje y
 	 */
-	public int getPosY() 
-	{
+	public int getPosY() {
 		return pos.getY();
 	}
 
-	
-	public void accionar(Logica l)
-	{
-		if (borrar || pos.getY() >= 600 || pos.getY() - posYDeInicio >= rangoDeAlcance)
-		{
+	public void accionar(Logica l) {
+		if (borrar || pos.getY() >= 600 || pos.getY() - posYDeInicio >= rangoDeAlcance) {
 			l.agregarEntidadAE(this);
-		}
-		else 
-		{
+		} else {
 			pos.actPosY(velocidad);
 			hitBox.setLocation(pos.getX(), pos.getY());
 		}
@@ -68,41 +61,39 @@ public class Proyectil_InfectadoB extends Proyectil
 
 	/**
 	 * Retorna el label
+	 * 
 	 * @return label
 	 */
-	public JLabel getLabel() 
-	{
+	public JLabel getLabel() {
 		return label;
 	}
 
 	/**
 	 * Retorna el hitBox
+	 * 
 	 * @return hitBox
 	 */
-	public Rectangle getHitBox()
-	{
+	public Rectangle getHitBox() {
 		return hitBox;
 	}
 
 	/**
 	 * La entidad se reporta con su visitor parametrizado.
 	 */
-	public void accept(Visitor v)
-	{
+	public void accept(Visitor v) {
 		v.visit(this);
 	}
 
 	/**
 	 * Retorna el visitor
+	 * 
 	 * @return visitor
 	 */
-	public Visitor getVisitor()
-	{
+	public Visitor getVisitor() {
 		return visitor;
 	}
-	
-	public void eliminar()
-	{
+
+	public void eliminar() {
 		borrar = true;
 	}
 

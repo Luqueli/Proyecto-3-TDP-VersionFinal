@@ -14,42 +14,40 @@ import Juego.Pos;
  * @author Giuliano Giannotti
  *
  */
-public class PowerUP_Factory 
-{
-	
-	//Constructor
-	public PowerUP_Factory() 
-	{
-		//Nada
+public class PowerUP_Factory {
+
+	// Constructor
+	public PowerUP_Factory() {
+		// Nada
 	}
-	
+
 	/**
 	 * Crea y retorna una cuarentenaObligatoria
+	 * 
 	 * @param p
 	 * @return cuarentenaObligataoria
 	 */
-	public PowerUp crearPOCO(Pos p)
-	{
+	public PowerUp crearPOCO(Pos p) {
 		return new CuarentenaObligatoria(p);
 	}
-	
+
 	/**
 	 * Crea y retorna una cura
+	 * 
 	 * @param p
 	 * @return cura
 	 */
-	public PowerUp crearCura(Pos p) 
-	{
+	public PowerUp crearCura(Pos p) {
 		return new Cura(p);
 	}
-	
+
 	/**
 	 * Crea y retorna una super arma sanitaria
+	 * 
 	 * @param p
 	 * @return super arma sanitaria
 	 */
-	public PowerUp crearSuperArmaSanitaria(Pos p) 
-	{
+	public PowerUp crearSuperArmaSanitaria(Pos p) {
 		return new SuperArmaSanitariaPU(p);
 	}
 }

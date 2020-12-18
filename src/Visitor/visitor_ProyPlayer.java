@@ -11,30 +11,25 @@ import Entidades.Infectado_Beta;
  *
  */
 
-public class visitor_ProyPlayer extends Visitor
-{
+public class visitor_ProyPlayer extends Visitor {
 	private int daño;
-	
-	
-	//Constructor
-	public visitor_ProyPlayer(int d) 
-	{
+
+	// Constructor
+	public visitor_ProyPlayer(int d) {
 		daño = d;
 	}
-	
+
 	/**
 	 * El infectado alpha recibe el daño
 	 */
-	public void visit(Infectado_Alpha e)
-	{
-		e.recibirDaño(daño);	
+	public void visit(Infectado_Alpha e) {
+		e.recibirDaño(daño);
 	}
 
 	/**
 	 * El infectado beta recibe el daño
 	 */
-	public void visit(Infectado_Beta e)
-	{
+	public void visit(Infectado_Beta e) {
 		e.recibirDaño(daño);
 	}
 }

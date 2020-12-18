@@ -19,68 +19,57 @@ import Visitor.visitor_InfectadoBeta;
  * @author Giuliano Giannotti
  *
  */
-public class Infectado_Beta extends Infectado 
-{
-	
-	//Constructor
-	public Infectado_Beta()
-	{
+public class Infectado_Beta extends Infectado {
+
+	// Constructor
+	public Infectado_Beta() {
 		state = new NormalInfectB_State();
 		carga_viral = 110;
 		dañoCAC = 19;
 		dañoProyVirus = 12;
 		velocidad = 1;
-		pos = new Pos((int) Math.floor(Math.random()*(745-1)+1),(int) Math.floor(Math.random()*(86-1)+1));
+		pos = new Pos((int) Math.floor(Math.random() * (745 - 1) + 1), (int) Math.floor(Math.random() * (86 - 1) + 1));
 		label = new JLabel(new ImageIcon(GUI.class.getResource("/GifsEImagenes/ZCaminataB.gif")));
 		label.setBounds(pos.getX(), pos.getY(), 56, 86);
-		hitBox = new Rectangle(pos.getX(),pos.getY(),label.getBounds().width,label.getBounds().height);
+		hitBox = new Rectangle(pos.getX(), pos.getY(), label.getBounds().width, label.getBounds().height);
 		reposoDeDisparo = 0;
 		visitor = new visitor_InfectadoBeta(dañoCAC);
-		//El tiempo que espera para volver a disparar podria ser random propio de cada objeto con un atributo
 	}
-	
+
 	/**
 	 * La entidad se reporta en el visitor parametrizado
 	 */
-	public void  accept(Visitor visitor) 
-	{
+	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
-	
+
 	/**
 	 * Recibe el daño decrementado la carga viral.
+	 * 
 	 * @param d daño
 	 */
-	public void recibirDaño(int d) 
-	{
+	public void recibirDaño(int d) {
 		carga_viral = carga_viral - d;
 	}
- 
+
 	/**
 	 * Retorna el label
 	 */
-	public JLabel getLabel() 
-	{
+	public JLabel getLabel() {
 		return label;
 	}
-	
-	public void accionar(Logica l) 
-	{
+
+	public void accionar(Logica l) {
 		reposoDeDisparo++;
-		if (this.carga_viral <= 0) 
-		{
+		if (this.carga_viral <= 0) {
 			Entidad nuevo_PU = super.sueltaEntidad(this.pos);
-			if ( nuevo_PU != null) 
-			{
+			if (nuevo_PU != null) {
 				l.agregarEntidadAA(nuevo_PU);
 			}
 			l.agregarEntidadAE(this);
-		}
-		else 
-		{
-			state.accionar(l, reposoDeDisparo, pos, hitBox, fabProy, label, dañoProyVirus,visitor);
-			if (reposoDeDisparo >= 35) 
-			{                           //equivalente a decir If(disparo){...}
+		} else {
+			state.accionar(l, reposoDeDisparo, pos, hitBox, fabProy, label, dañoProyVirus, visitor);
+			if (reposoDeDisparo >= 35) { // equivalente a decir If(disparo){...}
 				reposoDeDisparo = 0;
 			}
 		}
@@ -88,53 +77,51 @@ public class Infectado_Beta extends Infectado
 
 	/**
 	 * Retorna la posicion del label en el eje x
+	 * 
 	 * @return posicion del label en el eje x
 	 */
-	public int getPosX() 
-	{
+	public int getPosX() {
 		return pos.getX();
 	}
 
 	/**
 	 * Retorna la posicion del label en el eje y
+	 * 
 	 * @return posicion del label en eje y
 	 */
-	public int getPosY()
-	{
+	public int getPosY() {
 		return pos.getY();
 	}
 
 	/**
 	 * Retorna el hitBox
+	 * 
 	 * @return hitBox
 	 */
-	public Rectangle getHitBox() 
-	{
+	public Rectangle getHitBox() {
 		return hitBox;
 	}
-   
+
 	/**
 	 * Retorna el visitor
+	 * 
 	 * @return visitor
 	 */
-	public Visitor getVisitor() 
-	{
+	public Visitor getVisitor() {
 		return visitor;
 	}
-    
+
 	/**
 	 * Setea el estado a State_Infectado
 	 */
-	public void setState(State_Infectado si) 
-	{
+	public void setState(State_Infectado si) {
 		state = si;
 	}
 
 	/**
 	 * Setea el estado a estado normal.
 	 */
-	public void setDefaultState()
-	{
-		state=new NormalInfectB_State();
+	public void setDefaultState() {
+		state = new NormalInfectB_State();
 	}
 }

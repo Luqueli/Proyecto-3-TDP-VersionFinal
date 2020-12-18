@@ -11,23 +11,19 @@ import Entidades.Player;
  *
  */
 
-public class visitor_CuraPU extends Visitor
-{
-	
+public class visitor_CuraPU extends Visitor {
+
 	private int cura;
-	
-	
-	//Constructor
-	public visitor_CuraPU(int c) 
-	{
+
+	// Constructor
+	public visitor_CuraPU(int c) {
 		cura = c;
 	}
-	
+
 	/**
 	 * El curador recibe la cura
 	 */
-	public void visit(Player e) 
-	{
+	public void visit(Player e) {
 		e.recibirCura(cura);
 	}
 }

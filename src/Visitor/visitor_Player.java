@@ -14,15 +14,13 @@ import Entidades.SuperArmaSanitariaPU;
  * @author Giuliano Giannotti
  *
  */
-public class visitor_Player extends Visitor 
-{
-	
-	//Constructor
-	public visitor_Player() 
-	{
-		//Nada
+public class visitor_Player extends Visitor {
+
+	// Constructor
+	public visitor_Player() {
+		// Nada
 	}
-	
+
 	public void visit(Proyectil_InfectadoA e) {
 		e.eliminar();
 	}
@@ -40,8 +38,7 @@ public class visitor_Player extends Visitor
 	}
 
 	public void visit(CuarentenaObligatoria e) {
-		e.eliminar();	
+		e.eliminar();
 	}
 
-	
 }

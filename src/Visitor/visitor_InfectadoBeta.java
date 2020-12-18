@@ -12,41 +12,34 @@ import Entidades.Proyectil_Player;
  *
  */
 
-public class visitor_InfectadoBeta extends Visitor
-{
+public class visitor_InfectadoBeta extends Visitor {
 	private int dañoCuerpoACuerpo;
 	private boolean cooldown;
-	
-	
-	//Constructor
-	public visitor_InfectadoBeta(int d) 
-	{
+
+	// Constructor
+	public visitor_InfectadoBeta(int d) {
 		dañoCuerpoACuerpo = d;
 		cooldown = false;
 	}
-	
+
 	/**
 	 * Recibe el daño el infectado beta
 	 */
-	public void visit(Player e) 
-	{
-		if(!cooldown) 
-		{
+	public void visit(Player e) {
+		if (!cooldown) {
 			e.recibirDaño(dañoCuerpoACuerpo);
-			cooldown=true;
+			cooldown = true;
 		}
 	}
 
-	public void visit(Proyectil_Player e)
-	{
+	public void visit(Proyectil_Player e) {
 		e.eliminar();
 	}
-	
+
 	/**
 	 * Setea el cooldown
 	 */
-	public void setCooldown(boolean b) 
-	{
-		cooldown=b;
+	public void setCooldown(boolean b) {
+		cooldown = b;
 	}
 }

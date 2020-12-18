@@ -17,9 +17,9 @@ import Visitor.Visitor;
  * @author Giuliano Giannotti
  *
  */
-public abstract class State_Infectado 
-{
-    protected int velocidad;
-	
-	public abstract void accionar(Logica l, int rd, Pos pos,Rectangle hitBox, Proyectil_Factory pf,JLabel label,int dañoProyVirus,Visitor visitor);
+public abstract class State_Infectado {
+	protected int velocidad;
+
+	public abstract void accionar(Logica l, int rd, Pos pos, Rectangle hitBox, Proyectil_Factory pf, JLabel label,
+			int dañoProyVirus, Visitor visitor);
 }

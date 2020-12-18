@@ -16,12 +16,11 @@ import Visitor.Visitor;
  * @author Giuliano Giannotti
  *
  */
-public class InfectCongelado_State extends State_Infectado
-{
-	
-	public void accionar(Logica l, int rd, Pos pos, Rectangle hitBox, Proyectil_Factory pf, JLabel label, int dañoProyVirus,Visitor visitor) 
-	{
-		//Vacio ya que el al estar el infectado congelado no hace nada
+public class InfectCongelado_State extends State_Infectado {
+
+	public void accionar(Logica l, int rd, Pos pos, Rectangle hitBox, Proyectil_Factory pf, JLabel label,
+			int dañoProyVirus, Visitor visitor) {
+		// Vacio ya que el al estar el infectado congelado no hace nada
 	}
 }
 

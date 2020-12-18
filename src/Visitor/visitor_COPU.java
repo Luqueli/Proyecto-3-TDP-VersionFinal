@@ -12,17 +12,14 @@ import Temporizadores.TempPowerUpCO;
  *
  */
 
-public class visitor_COPU extends Visitor
-{
+public class visitor_COPU extends Visitor {
 	private int tiempoDeDuracion;
-	
-	
-	//Construtor
-	public visitor_COPU(int td) 
-	{
-		tiempoDeDuracion=td;
+
+	// Construtor
+	public visitor_COPU(int td) {
+		tiempoDeDuracion = td;
 	}
-	
+
 	/**
 	 * Setea el temporizador de la cuarentena obligatoria.
 	 */

@@ -13,24 +13,20 @@ import Temporizadores.TempPowerUpSA;
  *
  */
 
-public class visitor_SuperArmaSanitaria extends Visitor
-{
-	
+public class visitor_SuperArmaSanitaria extends Visitor {
+
 	private int tdd; // Tiempo de duracion del power up
-	
-	
-	//Constructor
-	public visitor_SuperArmaSanitaria(int t) 
-	{
+
+	// Constructor
+	public visitor_SuperArmaSanitaria(int t) {
 		tdd = t;
 	}
-	
+
 	/**
 	 * Cambia el estado del arma sel jugador y setea el temporizador.
 	 */
-	public void visit(Player e) 
-	{
+	public void visit(Player e) {
 		e.cambiarEstadoDeArma(new SuperArma_State());
-		e.setTemp(new TempPowerUpSA(tdd,e));
+		e.setTemp(new TempPowerUpSA(tdd, e));
 	}
 }

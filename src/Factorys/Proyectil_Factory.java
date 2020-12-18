@@ -15,43 +15,43 @@ import Juego.Pos;
  *
  */
 
-public class Proyectil_Factory 
-{
-	
-	//Constructor
-	public Proyectil_Factory()
-	{
-		//Nada
+public class Proyectil_Factory {
+
+	// Constructor
+	public Proyectil_Factory() {
+		// Nada
 	}
-	
+
 	/**
 	 * Crea y retorna un proyectil de jugador.
+	 * 
 	 * @param p
 	 * @param d
 	 * @return proyectil de jugador
 	 */
-	public Proyectil crearProyectil_Player(Pos p,int d) 
-	{
-		return new Proyectil_Player(p,d); 
+	public Proyectil crearProyectil_Player(Pos p, int d) {
+		return new Proyectil_Player(p, d);
 	}
-	
+
 	/**
 	 * Crea y retorna un proyectil de infectado alpha
+	 * 
 	 * @param p
 	 * @param d
 	 * @return proyectil de infectado alpha
 	 */
-	public Proyectil crearProyectil_InfectadoA(Pos p,int d) {
-		return new Proyectil_InfectadoA(p,d);
+	public Proyectil crearProyectil_InfectadoA(Pos p, int d) {
+		return new Proyectil_InfectadoA(p, d);
 	}
-	
+
 	/**
 	 * Crea y retorna un proyectil de infectado beta.
+	 * 
 	 * @param p
 	 * @param d
 	 * @return proyectil de infectado beta
 	 */
-	public Proyectil crearProyectil_InfectadoB(Pos p,int d) {
-		return new Proyectil_InfectadoB(p,d);
+	public Proyectil crearProyectil_InfectadoB(Pos p, int d) {
+		return new Proyectil_InfectadoB(p, d);
 	}
 }

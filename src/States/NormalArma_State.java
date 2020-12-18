@@ -1,18 +1,18 @@
 package States;
 
 /**
- * Clase SuperArma_State. Implementacion del estado super arma.
+ * Clase Normal_State. Implementacion del estado normal.
  * 
  * @author Lucas Bonetto
  * @author Boris de Prada
  * @author Giuliano Giannotti
  *
  */
-public class SuperArma_State extends State_Arma {
+public class NormalArma_State extends State_Arma {
 
 	// Constructor
-	public SuperArma_State() {
-		dañoDeArma = 29;
+	public NormalArma_State() {
+		dañoDeArma = 22;
 	}
 
 	/**
