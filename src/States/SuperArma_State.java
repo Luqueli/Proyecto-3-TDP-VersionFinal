@@ -1,12 +1,28 @@
 package States;
 
-public class SuperArma_State extends State_Arma {
+/**
+ * Clase SuperArma_State. Implementacion del estado super arma.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+public class SuperArma_State extends State_Arma 
+{
 	
-	public SuperArma_State() {
-		dañoDeArma=29;
+	//Constructor
+	public SuperArma_State()
+	{
+		dañoDeArma = 29;
 	}
 		
-	public int getDaño() {
+	/**
+	 * Retorna el daño
+	 * @return daño
+	 */
+	public int getDaño() 
+	{
 		return dañoDeArma;
 	}
 	

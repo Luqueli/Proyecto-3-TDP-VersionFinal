@@ -9,7 +9,17 @@ import Juego.Logica;
 import Juego.Pos;
 import Visitor.Visitor;
 
-public abstract class State_Infectado {
-
+/**
+ * Clase abstracta State_Infectado.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+public abstract class State_Infectado 
+{
+    protected int velocidad;
+	
 	public abstract void accionar(Logica l, int rd, Pos pos,Rectangle hitBox, Proyectil_Factory pf,JLabel label,int dañoProyVirus,Visitor visitor);
 }

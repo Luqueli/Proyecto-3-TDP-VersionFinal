@@ -1,14 +1,8 @@
 package Entidades;
 
 import java.awt.Rectangle;
-import java.net.URL;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import Factorys.PowerUP_Factory;
-import Factorys.Proyectil_Factory;
 import Juego.GUI;
 import Juego.Logica;
 import Juego.Pos;
@@ -17,73 +11,130 @@ import States.State_Infectado;
 import Visitor.Visitor;
 import Visitor.visitor_InfectadoBeta;
 
-public class Infectado_Beta extends Infectado {
+/**
+ * Clase Infectado_Beta. Implementacion de un infectado Beta.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+public class Infectado_Beta extends Infectado 
+{
 	
-	public Infectado_Beta(){
-		state=new NormalInfectB_State();
-		carga_viral=110;
-		dañoCAC=19;
-		dañoProyVirus=12;
-		velocidad=1;
-		pos=new Pos((int) Math.floor(Math.random()*(745-1)+1),(int) Math.floor(Math.random()*(86-1)+1));
+	//Constructor
+	public Infectado_Beta()
+	{
+		state = new NormalInfectB_State();
+		carga_viral = 110;
+		dañoCAC = 19;
+		dañoProyVirus = 12;
+		velocidad = 1;
+		pos = new Pos((int) Math.floor(Math.random()*(745-1)+1),(int) Math.floor(Math.random()*(86-1)+1));
 		label = new JLabel(new ImageIcon(GUI.class.getResource("/GifsEImagenes/ZCaminataB.gif")));
 		label.setBounds(pos.getX(), pos.getY(), 56, 86);
-		hitBox= new Rectangle(pos.getX(),pos.getY(),label.getBounds().width,label.getBounds().height);
-		reposoDeDisparo=0;
-		visitor=new visitor_InfectadoBeta(dañoCAC);
-		//el tiempo que espera para volver a disparar podria ser random propio de cada objeto con un atributo
+		hitBox = new Rectangle(pos.getX(),pos.getY(),label.getBounds().width,label.getBounds().height);
+		reposoDeDisparo = 0;
+		visitor = new visitor_InfectadoBeta(dañoCAC);
+		//El tiempo que espera para volver a disparar podria ser random propio de cada objeto con un atributo
 	}
 	
-	public void  accept(Visitor visitor) {
+	/**
+	 * La entidad se reporta en el visitor parametrizado
+	 */
+	public void  accept(Visitor visitor) 
+	{
 		visitor.visit(this);
 	}
 	
-	public void recibirDaño(int d) {
-		carga_viral=carga_viral-d;
+	/**
+	 * Recibe el daño decrementado la carga viral.
+	 * @param d daño
+	 */
+	public void recibirDaño(int d) 
+	{
+		carga_viral = carga_viral - d;
 	}
-
-	public JLabel getLabel() {
+ 
+	/**
+	 * Retorna el label
+	 */
+	public JLabel getLabel() 
+	{
 		return label;
 	}
 	
-	public void accionar(Logica l) {
+	public void accionar(Logica l) 
+	{
 		reposoDeDisparo++;
-		if(this.carga_viral<=0) {
+		if (this.carga_viral <= 0) 
+		{
 			Entidad nuevo_PU = super.sueltaEntidad(this.pos);
-			if(nuevo_PU!=null) {
+			if ( nuevo_PU != null) 
+			{
 				l.agregarEntidadAA(nuevo_PU);
 			}
 			l.agregarEntidadAE(this);
 		}
-		else {
+		else 
+		{
 			state.accionar(l, reposoDeDisparo, pos, hitBox, fabProy, label, dañoProyVirus,visitor);
-			if(reposoDeDisparo>=35) {//equivalente a decir If(disparo){...}
-				reposoDeDisparo=0;
+			if (reposoDeDisparo >= 35) 
+			{                           //equivalente a decir If(disparo){...}
+				reposoDeDisparo = 0;
 			}
 		}
 	}
 
-	public int getPosX() {
+	/**
+	 * Retorna la posicion del label en el eje x
+	 * @return posicion del label en el eje x
+	 */
+	public int getPosX() 
+	{
 		return pos.getX();
 	}
 
-	public int getPosY() {
+	/**
+	 * Retorna la posicion del label en el eje y
+	 * @return posicion del label en eje y
+	 */
+	public int getPosY()
+	{
 		return pos.getY();
 	}
 
-	public Rectangle getHitBox() {
+	/**
+	 * Retorna el hitBox
+	 * @return hitBox
+	 */
+	public Rectangle getHitBox() 
+	{
 		return hitBox;
 	}
-
-	public Visitor getVisitor() {
+   
+	/**
+	 * Retorna el visitor
+	 * @return visitor
+	 */
+	public Visitor getVisitor() 
+	{
 		return visitor;
 	}
-
-	public void setState(State_Infectado si) {
-		state=si;
+    
+	/**
+	 * Setea el estado a State_Infectado
+	 */
+	public void setState(State_Infectado si) 
+	{
+		state = si;
 	}
 
-	public void setDefaultState() {
+	/**
+	 * Setea el estado a estado normal.
+	 */
+	public void setDefaultState()
+	{
 		state=new NormalInfectB_State();
 	}
 }

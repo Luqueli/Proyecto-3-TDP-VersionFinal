@@ -1,41 +1,69 @@
 package Juego;
 
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import Entidades.Entidad;
 import Entidades.Infectado;
 import Factorys.Infect_Factory;
 
-public class Nivel {
+/**
+ * Clase Nivel. Implementacion del nivel del juego.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+
+public class Nivel 
+{
+	
 	private int nivel;
 	private int oleada;
 	private Infect_Factory fabInfect;
 	
-	public Nivel() {
-		nivel=1;
-		oleada=1;
-		fabInfect=new Infect_Factory();
+	
+	//Constructor
+	public Nivel() 
+	{
+		nivel = 1;
+		oleada = 1;
+		fabInfect = new Infect_Factory();
 	}
 	
-	public void pasarOleada() {
-		if(oleada==2) {
+	/**
+	 * Si se pasa de oleada se aumenta el nivel
+	 */
+	public void pasarOleada() 
+	{
+		if (oleada == 2) 
+		{
 			nivel++;
-			oleada=1;
+			oleada = 1;
 		}
-		else {
+		else 
+		{
 			oleada++;
 		}
 	}
 	
-	public int getNivel() {
+	/**
+	 * Retorna el nivel
+	 * @return nivel
+	 */
+	public int getNivel() 
+	{
 		return nivel;
 	}
 	
-	public Collection<Infectado> getEntidadesDeOleada(){
-		Collection<Infectado> enemigos= new CopyOnWriteArrayList<Infectado>();
-		switch(nivel) {
+	/**
+	 * Retorna les entidades de la oleada
+	 * @return lista de entidades de la oleada
+	 */
+	public Collection<Infectado> getEntidadesDeOleada()
+	{
+		Collection<Infectado> enemigos = new CopyOnWriteArrayList<Infectado>();
+		switch(nivel) 
+		{
 			
 			case 1 : crearZombAlpha(1*oleada,enemigos);
 					 crearZombBeta(4*oleada,enemigos);
@@ -48,16 +76,29 @@ public class Nivel {
 		return enemigos;
 	}
 	
-	
-	private void crearZombAlpha(int n, Collection<Infectado> enemigos) {
-		for(int i=0; i<n; i++) {
-			Infectado e= fabInfect.create_InfectadoAlpha();
+	/**
+	 * Crea zombies alpha
+	 * @param n
+	 * @param enemigos
+	 */
+	private void crearZombAlpha(int n, Collection<Infectado> enemigos) 
+	{
+		for(int i = 0; i < n; i++) 
+		{
+			Infectado e = fabInfect.create_InfectadoAlpha();
 			enemigos.add(e);
 		}
 	}
 	
-	private void crearZombBeta(int n,Collection<Infectado> enemigos) {
-		for(int i=0; i<n; i++) {
+	/**
+	 * Crea zombies beta
+	 * @param n
+	 * @param enemigos
+	 */
+	private void crearZombBeta(int n,Collection<Infectado> enemigos)
+	{
+		for(int i = 0; i < n; i++) 
+		{
 			enemigos.add(fabInfect.create_InfectadoBeta());
 		}
 	}

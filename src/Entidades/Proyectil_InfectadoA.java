@@ -4,65 +4,105 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import Juego.GUI;
 import Juego.Logica;
 import Juego.Pos;
 import Visitor.Visitor;
 import Visitor.visitor_ProyInfectA;
 
-public class Proyectil_InfectadoA extends Proyectil {
-	private int posYDeInicio;
-	private int rangoDeAlcance;
+/**
+ * Clase Proyectil_InfectadoA. Implementacion del proyectil de un infectado alpha.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+public class Proyectil_InfectadoA extends Proyectil 
+{
 	
-	public Proyectil_InfectadoA(Pos p,int d){
-		pos=p;
-		daño=d;
-		label=new JLabel(new ImageIcon(Proyectil_InfectadoA.class.getResource("/GifsEImagenes/Proyectil_InfectadoA.gif")));
+	//Constructor
+	public Proyectil_InfectadoA(Pos p,int d)
+	{
+		pos = p;
+		daño = d;
+		label = new JLabel(new ImageIcon(Proyectil_InfectadoA.class.getResource("/GifsEImagenes/Proyectil_InfectadoA.gif")));
 		label.setBounds(p.getX(), p.getY(), 16, 32);
-		hitBox=new Rectangle(p.getX(),p.getY(),label.getBounds().width,label.getBounds().height);
-		posYDeInicio=pos.getY();
-		rangoDeAlcance=220;
-		velocidad=8;
-		borrar= false;
-		visitor= new visitor_ProyInfectA(daño);
+		hitBox = new Rectangle(p.getX(),p.getY(),label.getBounds().width,label.getBounds().height);
+		posYDeInicio = pos.getY();
+		rangoDeAlcance = 220;
+		velocidad = 8;
+		borrar = false;
+		visitor = new visitor_ProyInfectA(daño);
 	}
 	
-	public int getPosX() {
+	/**
+	 * Retorna la posicion del label en el eje x
+	 * @return posicion del label en el eje x
+	 */
+	public int getPosX() 
+	{
 		return pos.getX();
 	}
 
-	public int getPosY() {
+	/**
+	 * Retorna la posicion del label en el eje y
+	 * @return posicion del label en el eje y
+	 */
+	public int getPosY()
+	{
 		return pos.getY();
 	}
 	
-	public void accionar(Logica l) {
-		if(borrar || pos.getY()>=600 || pos.getY()-posYDeInicio>=rangoDeAlcance) {
+	public void accionar(Logica l) 
+	{
+		if (borrar || pos.getY() >= 600 || pos.getY() - posYDeInicio >= rangoDeAlcance)
+		{
 			l.agregarEntidadAE(this);
 		}
-		else {
+		else 
+		{
 			pos.actPosY(velocidad);
 			hitBox.setLocation(pos.getX(), pos.getY());
 		}
 	}
 	
-	public JLabel getLabel() {
+	/**
+	 * Retorna el label
+	 * @return label
+	 */
+	public JLabel getLabel()
+	{
 		return label;
 	}
 
-	public Rectangle getHitBox() {
+	/**
+	 * Retorna el hitBox
+	 * @return hitBox
+	 */
+	public Rectangle getHitBox()
+	{
 		return hitBox;
 	}
 
-	public void accept(Visitor v) {
+	/**
+	 * La entidad se reporta con su visitor parametrizado
+	 */
+	public void accept(Visitor v)
+	{
 		v.visit(this);
 	}
 
-	public Visitor getVisitor() {
+	/**
+	 * Retorna el visitor
+	 * @return visitor
+	 */
+	public Visitor getVisitor() 
+	{
 		return visitor;
 	}
 	
-	public void eliminar() {
-		borrar=true;
+	public void eliminar() 
+	{
+		borrar = true;
 	}
 }

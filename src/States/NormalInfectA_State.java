@@ -1,33 +1,45 @@
 package States;
 
 import java.awt.Rectangle;
-
 import javax.swing.JLabel;
-
 import Entidades.Entidad;
 import Factorys.Proyectil_Factory;
 import Juego.Logica;
 import Juego.Pos;
 import Visitor.Visitor;
-import Visitor.visitor_InfectadoAlpha;
 
-public class NormalInfectA_State extends State_Infectado {
-	private int velocidad;
+/**
+ * Clase NormalInfectA_State. Implementacion del estado NormalInfectA.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+
+public class NormalInfectA_State extends State_Infectado 
+{
 	
-	public NormalInfectA_State(){
-		velocidad=2;
+	//Velocidad
+	public NormalInfectA_State()
+	{
+		velocidad = 2;
 	}
 	
-	public void accionar(Logica l, int reposoDeDisparo, Pos pos,Rectangle hitBox,  Proyectil_Factory fabProy, JLabel label,int dañoProyVirus,Visitor visitor) {
-		if(pos.getY()>=600) {
+	public void accionar(Logica l, int reposoDeDisparo, Pos pos,Rectangle hitBox,  Proyectil_Factory fabProy, JLabel label,int dañoProyVirus,Visitor visitor)
+	{
+		if (pos.getY( ) >= 600) 
+		{
 			pos.actPosY(-pos.getY()-label.getBounds().height);
 			hitBox.setLocation(pos.getX(),pos.getY());
 			visitor.setCooldown(false);
 		}
-		else {
+		else 
+		{
 			pos.actPosY(velocidad);
 			hitBox.setLocation(pos.getX(), pos.getY());
-			if(reposoDeDisparo>=40) {
+			if (reposoDeDisparo >= 40) 
+			{
 				Entidad e = fabProy.crearProyectil_InfectadoA(new Pos(pos.getX()+label.getBounds().width/2,pos.getY()+label.getBounds().height),dañoProyVirus);
 				l.agregarEntidadAA(e);
 			}

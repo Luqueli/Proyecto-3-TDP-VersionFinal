@@ -1,27 +1,60 @@
 package Juego;
 
-public class Pos {
+/**
+ * Clase Pos. 
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+public class Pos
+{
+	
 	private int x;
 	private int y;
 	
-	public Pos (int e, int i) {
+	
+	//Constructor
+	public Pos (int e, int i)
+	{
 		x=e;
 		y=i;
 	}
 	
-	public void actPosX(int n) {
-		x+=n;
+	/**
+	 * Actualiza el valor de x
+	 * @param n
+	 */
+	public void actPosX(int n) 
+	{
+		x += n;
 	}
 	
-	public void actPosY(int n) {
-		y+=n;
+	/**
+	 * Actualiza el valor de y
+	 * @param n
+	 */
+	public void actPosY(int n) 
+	{
+		y += n;
 	}
 	
-	public int getX() {
+	/**
+	 * Retorna el valor de x
+	 * @return x
+	 */
+	public int getX() 
+	{
 		return x;
 	}
 	
-	public int getY() {
+	/**
+	 * Retorna el valor de y
+	 * @return y
+	 */
+	public int getY() 
+	{
 		return y;
 	}
 }

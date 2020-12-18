@@ -1,120 +1,200 @@
 package Entidades;
 
 import java.awt.Rectangle;
-import java.net.URL;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import Armas.Arma;
 import Armas.ArmaSanitaria;
 import Factorys.Proyectil_Factory;
 import Juego.Logica;
 import Juego.Pos;
-import States.Normal_State;
 import States.State_Arma;
 import Temporizadores.Temporizador;
 import Visitor.Visitor;
 import Visitor.visitor_Player;
 
-public class Player extends Entidad{
+/**
+ * Clase Player. Implementacion de un jugador.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+
+public class Player extends Entidad
+{
+	
 	protected int vida;
-	protected int velocidad;
 	private Arma arma;
-	private Pos pos;
 	private Proyectil_Factory fabProy;
 	private Temporizador tempPowerUp;
 	
-	public Player() {
-		tempPowerUp=null;
-		arma=new ArmaSanitaria();
-		vida=100;
-		velocidad=9;
-		pos=new Pos(400,457);
-		fabProy=new Proyectil_Factory();
-		hitBox= new Rectangle(pos.getX(),pos.getY(),56,104);
+	
+	//Constructor
+	public Player() 
+	{
+		tempPowerUp = null;
+		arma = new ArmaSanitaria();
+		vida = 100;
+		velocidad = 9;
+		pos = new Pos(400,457);
+		fabProy = new Proyectil_Factory();
+		hitBox = new Rectangle(pos.getX(),pos.getY(),56,104);
 	}
 	
-	public int moverIzq() {
-		if(pos.getX()>=velocidad) {
+	/**
+	 * Mueve a la izquierda el label
+	 * @return la posicion del label en el eje x
+	 */
+	public int moverIzq()
+	{
+		if (pos.getX() >= velocidad) 
+		{
 			pos.actPosX(-velocidad);
 			hitBox.setLocation(pos.getX(), pos.getY());
 		}	
 		return pos.getX();
 	}
 	
-	public int moverDer() {
-		if(pos.getX()<=744-velocidad) {
+	/**
+	 * Mueve a la derecha el label
+	 * @return la posicion del label en el eje x
+	 */
+	public int moverDer() 
+	{
+		if (pos.getX() <= 744-velocidad) 
+		{
 			pos.actPosX(velocidad);
 			hitBox.setLocation(pos.getX(), pos.getY());
 		}
 		return pos.getX();
 	}
 	
-	public Entidad disparar(Pos p) {
+	/**
+	 * Se encarga de generar el disparo
+	 * @param p Pos
+	 */
+	public Entidad disparar(Pos p) 
+	{
 			return fabProy.crearProyectil_Player(p,arma.getDaño());
 	}
 	
-	public void cambiarEstadoDeArma(State_Arma sp) {
+	/**
+	 * Se encarga de cambiar el estado del arma.
+	 * @param sp State_Arma
+	 */
+	public void cambiarEstadoDeArma(State_Arma sp) 
+	{
 		arma.cambiarEstado(sp);;
 	}
 	
-	public void  accept(Visitor v) {
+	/**
+	 * La entidad se reporta con el visitor parametrizado.
+	 */
+	public void  accept(Visitor v) 
+	{
 		v.visit(this);
 	}
 	
-	public void recibirDaño(int d) {
-		vida=vida-d;
+	/**
+	 * Recibe el daño decrementado la vida.
+	 * @param d daño
+	 */
+	public void recibirDaño(int d) 
+	{
+		vida = vida - d;
 	}
-	/*
+	/**
 	 * Como las acciones que realiza el player dependen del Jugador (no maquina)
 	 * el accionar es utilizado para el funcionamiento de powerUps.
-	 * 
 	 */
-	public void accionar(Logica l) {
-		if(tempPowerUp!=null) {
+	public void accionar(Logica l) 
+	{
+		if ( tempPowerUp != null)
+		{
 			tempPowerUp.actualizar(l);
 		}
 	}
 
-	public int getPosX() {
+	/**
+	 * Retorna la posicion del label en el eje x.
+	 * @return posicion del label en el eje x
+	 */
+	public int getPosX()
+	{
 		return pos.getX();
 	}
-
-	public int getPosY() {
+ 
+	/**
+	 * Retorna la posicion del label en el eje y
+	 * @return posicion del label en el eje y
+	 */
+	public int getPosY() 
+	{
 		return pos.getY();
 	}
 
-	public Rectangle getHitBox() {
+	/**
+	 * Retorna el hitBox
+	 * @return hitBox
+	 */
+	public Rectangle getHitBox()
+	{
 		return hitBox;
 	}
 
-	public Visitor getVisitor() {
+	/**
+	 * Retorna un nuevo visitor jugador
+	 * @return nuevo visitor jugador.
+	 */
+	public Visitor getVisitor()
+	{
 		return new visitor_Player();
 	}
 	
-	public boolean PlayerMurio() {
-		if(vida<=0) {
-			return true;
+	/**
+	 * Indica si el jugador murio o no.
+	 * @return true en caso afirmativo, false en caso contrario.
+	 */
+	public boolean PlayerMurio()
+	{
+		boolean muerto = false;
+		if ( vida <= 0) 
+		{
+			muerto = true;
 		}
-		return false;
+		return muerto;
 	}
 	
-	public void recibirCura(int d) {
-		if(vida<100) {
-			vida=vida+d;
-			if(vida>100) {
-				vida=100;
+	/**
+	 * Se encarga de recibir la cura y aumentar la vida del jugador.
+	 * @param d cura
+	 */
+	public void recibirCura(int d)
+	{
+		if (vida < 100) 
+		{
+			vida = vida + d;
+			if (vida > 100) 
+			{
+				vida = 100;
 			}
 		}
 	}
 	
-	public void setTemp(Temporizador t) {
+	/**
+	 * Setea el temporizador
+	 */
+	public void setTemp(Temporizador t) 
+	{
 		tempPowerUp=t;
 	}
-	
-	public int getVida() {
+
+	/**
+	 * Retorna la vida del jugador
+	 * @return vida
+	 */
+	public int getVida()
+	{
 		return vida;
 	}
 }

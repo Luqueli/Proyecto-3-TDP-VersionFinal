@@ -1,28 +1,35 @@
 package Visitor;
 
-import Entidades.CuarentenaObligatoria;
-import Entidades.Cura;
-import Entidades.Entidad;
-import Entidades.Infectado_Alpha;
-import Entidades.Infectado_Beta;
 import Entidades.Player;
-import Entidades.Proyectil_InfectadoA;
-import Entidades.Proyectil_InfectadoB;
-import Entidades.Proyectil_Player;
-import Entidades.SuperArmaSanitariaPU;
 import States.SuperArma_State;
 import Temporizadores.TempPowerUpSA;
-import Temporizadores.Temporizador;
 
-public class visitor_SuperArmaSanitaria extends Visitor {
+/**
+ * Clase visitor_SuperArmaSanitaria. Implementacion del visitor del super arma sanitaria.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+
+public class visitor_SuperArmaSanitaria extends Visitor
+{
 	
-	private int tdd;//tiempo de duracion del power up
+	private int tdd; // Tiempo de duracion del power up
 	
-	public visitor_SuperArmaSanitaria(int t) {
-		tdd=t;
+	
+	//Constructor
+	public visitor_SuperArmaSanitaria(int t) 
+	{
+		tdd = t;
 	}
 	
-	public void visit(Player e) {
+	/**
+	 * Cambia el estado del arma sel jugador y setea el temporizador.
+	 */
+	public void visit(Player e) 
+	{
 		e.cambiarEstadoDeArma(new SuperArma_State());
 		e.setTemp(new TempPowerUpSA(tdd,e));
 	}

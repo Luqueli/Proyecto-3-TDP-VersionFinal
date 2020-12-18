@@ -2,12 +2,20 @@ package Entidades;
 
 import javax.swing.JLabel;
 
-import Juego.Pos;
 
-public abstract class Proyectil extends Entidad{
-	protected Pos pos;
-	protected int velocidad=15;
+/**
+ * Clase abstracta Proyectil.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+public abstract class Proyectil extends Entidad
+{
 	protected JLabel label;
 	protected int daño;
 	protected boolean borrar;
+	protected int posYDeInicio;
+	protected int rangoDeAlcance;
 }

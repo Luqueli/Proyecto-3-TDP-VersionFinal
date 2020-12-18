@@ -4,17 +4,38 @@ import Entidades.Infectado;
 import Entidades.Infectado_Alpha;
 import Entidades.Infectado_Beta;
 
-public class Infect_Factory {
+/**
+ * Clase Infect_Factory. Implementacion del factory de un infectado.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+public class Infect_Factory
+{
 	
-	public Infect_Factory() {
-		//empty
+	//Constructor
+	public Infect_Factory() 
+	{
+		//Nada
 	}
 	
-	public Infectado create_InfectadoAlpha() {
+	/**
+	 * Crea un nuevo infectado Alpha
+	 * @return Infectado alpha
+	 */
+	public Infectado create_InfectadoAlpha()
+	{
 		return new Infectado_Alpha();
 	}
 	
-	public Infectado create_InfectadoBeta() {
+	/**
+	 * Retorna un nuevo infectado Beta
+	 * @return Infectado Alpha
+	 */
+	public Infectado create_InfectadoBeta() 
+	{
 		return new Infectado_Beta();
 	}
 	

@@ -2,18 +2,42 @@ package Armas;
 
 import States.Normal_State;
 import States.State_Arma;
-
-public class ArmaSanitaria extends Arma{
-	public ArmaSanitaria() {
-		state=new Normal_State();
+/**
+ * Clase ArmaSanitaria
+ * Implementacion del arma sanitaria.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+public class ArmaSanitaria extends Arma
+{
+	
+	//Constructor
+	/**
+	 * Inicia su estado normal.
+	 */
+	public ArmaSanitaria() 
+	{
+		state = new Normal_State();
 	}
-
-	public int getDaño() {
+ 
+	/**
+	 * Retorna el daño generado
+	 * @return daño generado
+	 */
+	public int getDaño() 
+	{
 		return state.getDaño();
 	}
 	
-	public void cambiarEstado(State_Arma sa) {
-		state=sa;
+	/**
+	 * Cambia de estado  Normal_State normal a State_Arma
+	 */
+	public void cambiarEstado(State_Arma sa) 
+	{
+		state = sa;
 	}
 	
 	

@@ -2,21 +2,40 @@ package Temporizadores;
 
 import Juego.Logica;
 
-public class TempPowerUpCO extends Temporizador{
+/**
+ * Clase TempPowerUpCO. Implementacion del temporizador PowerUpCO.
+ * 
+ * @author Lucas Bonetto
+ * @author Boris de Prada
+ * @author Giuliano Giannotti
+ *
+ */
+
+public class TempPowerUpCO extends Temporizador
+{
 	private boolean activado;
 	
-	public TempPowerUpCO(int tl) {
-		tiempoLimite=tl;
-		activado=false;
+	
+	//Constructor
+	public TempPowerUpCO(int tl) 
+	{
+		tiempoLimite = tl;
+		activado = false;
 	}
 
-	public void actualizar(Logica l) {
+	/**
+	 * Actualiza el contador y el estado de los infectados
+	 */
+	public void actualizar(Logica l) 
+	{
 		contador++;
-		if(!activado) {
+		if (!activado)
+		{
 			l.ParalizarInfectados();
-			activado=true;
+			activado = true;
 		}
-		if(contador>=tiempoLimite) {
+		if (contador >= tiempoLimite) 
+		{
 			l.DesparalizarInfectados();
 			l.getPlayer().setTemp(null);
 		}
