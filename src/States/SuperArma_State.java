@@ -12,7 +12,7 @@ public class SuperArma_State extends State_Arma {
 
 	// Constructor
 	public SuperArma_State() {
-		dañoDeArma = 29;
+		dañoDeArma = 38;
 	}
 
 	/**

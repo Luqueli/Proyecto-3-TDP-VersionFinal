@@ -65,7 +65,7 @@ public abstract class Entidad {
 	}
 
 	public void accionar(Logica l) {
-	};
+	}
 
 	/**
 	 * Retorna nulo

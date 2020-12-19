@@ -17,6 +17,10 @@ import Visitor.Visitor;
  *
  */
 public class InfectCongelado_State extends State_Infectado {
+	
+	public InfectCongelado_State() {
+		
+	}
 
 	public void accionar(Logica l, int rd, Pos pos, Rectangle hitBox, Proyectil_Factory pf, JLabel label,
 			int dañoProyVirus, Visitor visitor) {
