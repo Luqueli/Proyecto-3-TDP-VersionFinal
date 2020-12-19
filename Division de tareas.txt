@@ -13,7 +13,8 @@ Boris De Prada: Implementacion de los paquetes Armas, Factorys y las clases Stat
 
 
 
-Giuliano Giannotti: refactoring general del codigo en variables repetidas. Documentacion
-		    de todo el codigo, cardinalidad de Diagrama UML completo.
-		    Correcciones generales en el diagrama UML completo.
-		
+Giuliano Giannotti: Refactoring general de todo el codigo en variables repetidas y 
+                    limpiando codigo muerto. Documentacion de todo el codigo. 
+                    Indentacion completa de todo el codigo. Limpieza de warnings del 
+                    codigo. Cardinalidad de Diagrama UML completo. Correcciones 
+                    generales en el diagrama UML completo. 
